@@ -35,10 +35,28 @@ test("主要な要件をクライアント実装と印刷CSSに含む", async ()
   assert.match(script, /localStorage/);
   assert.match(script, /parseCSV/);
   assert.match(script, /validateRows/);
-  assert.match(script, /サンプルスプレッドシートを書き出す/);
-  assert.match(script, /function exportSampleSheet/);
-  assert.match(script, /kanji-sample-\$\{visitorId\(\)\}\.csv/);
+  assert.match(script, /function createPersonalSheet/);
+  assert.match(script, /https:\/\/www\.googleapis\.com\/auth\/drive\.file/);
+  assert.match(script, /setInterval\(\(\) => syncFromSheet\(\{ silent: true \}\), 30000\)/);
   assert.match(script, /VISITOR_KEY/);
+  assert.match(script, /\(2\)-1 書き問題を出題/);
+  assert.match(script, /\(2\)-2 読み問題を出題/);
+  assert.match(script, /panel\.scrollTop = panelScroll/);
   assert.match(css, /writing-mode:vertical-rl/);
   assert.match(css, /@page \{ size:A4 landscape/);
+});
+
+test("現行の学年別漢字1026字と読みデータを内蔵する", async () => {
+  const [script, readingsText] = await Promise.all([
+    readFile(new URL("public/app.js", root), "utf8"),
+    readFile(new URL("public/kanji-readings.json", root), "utf8"),
+  ]);
+  const gradeMatches = [...script.matchAll(/^\s+([1-6]): "([^"]+)",$/gm)];
+  assert.deepEqual(gradeMatches.map((match) => [...match[2]].length), [80, 160, 200, 202, 193, 191]);
+  const all = gradeMatches.flatMap((match) => [...match[2]]);
+  assert.equal(all.length, 1026);
+  assert.equal(new Set(all).size, 1026);
+  const readings = JSON.parse(readingsText);
+  assert.equal(Object.keys(readings).length, 1026);
+  assert.ok(all.every((kanji) => /^[ぁ-ゖー]+$/.test(readings[kanji])));
 });

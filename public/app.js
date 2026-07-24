@@ -12,14 +12,14 @@
     1: "一右雨円王音下火花貝学気九休玉金空月犬見五口校左三山子四糸字耳七車手十出女小上森人水正生青夕石赤千川先早草足村大男竹中虫町天田土二日入年白八百文木本名目立力林六",
     2: "引羽雲園遠何科夏家歌画回会海絵外角楽活間丸岩顔汽記帰弓牛魚京強教近兄形計元言原戸古午後語工公広交光考行高黄合谷国黒今才細作算止市矢姉思紙寺自時室社弱首秋週春書少場色食心新親図数西声星晴切雪船線前組走多太体台地池知茶昼長鳥朝直通弟店点電刀冬当東答頭同道読内南肉馬売買麦半番父風分聞米歩母方北毎妹万明鳴毛門夜野友用曜来里理話",
     3: "悪安暗医委意育員院飲運泳駅央横屋温化荷界開階寒感漢館岸起期客究急級宮球去橋業曲局銀区苦具君係軽血決研県庫湖向幸港号根祭皿仕死使始指歯詩次事持式実写者主守取酒受州拾終習集住重宿所暑助昭消商章勝乗植申身神真深進世整昔全相送想息速族他打対待代第題炭短談着注柱丁帳調追定庭笛鉄転都度投豆島湯登等動童農波配倍箱畑発反坂板皮悲美鼻筆氷表秒病品負部服福物平返勉放味命面問役薬由油有遊予羊洋葉陽様落流旅両緑礼列練路和",
-    4: "愛案以衣位囲胃印英栄塩億加果貨課芽改械害街各覚完官管関観願希季紀喜旗器機議求泣救給挙漁共協鏡競極訓軍郡径型景芸欠結建健験固功好候航康告差菜最材昨札刷察参産散残氏司試児治辞失借種周祝順初松笑唱焼照城縄臣信成省清静席積折節説浅戦選然争倉巣束側続卒孫帯隊達単置仲貯兆腸低底停的典伝徒努灯堂働特毒熱念敗梅博飯飛費必票標不夫付府副粉兵別辺変便包法望牧末満未脈民無約勇要養浴利陸良料量輪類令冷例歴連老労録",
-    5: "圧移因永営衛易益液演応往桜恩可仮価河過賀快解格確額刊幹慣眼基寄規技義逆久旧居許境均禁句群経潔件券険検限現減故個護効厚耕鉱構興講混査再災妻採際在財罪雑酸賛支志枝師資飼示似識質舎謝授修述術準序招証象賞条状常情織職制性政勢精製税責績接設舌絶銭祖素総造像増則測属率損退貸態団断築張提程適敵統銅導徳独任燃能破犯判版比肥非備俵評貧布婦富武復複仏編弁保墓報豊防貿暴務夢迷綿輸余容略留領",
-    6: "異遺域宇映延沿我灰拡革閣割株干巻看簡危机揮貴疑吸供胸郷勤筋系敬警劇激穴絹権憲源厳己呼誤后孝皇紅降鋼刻穀骨困砂座済裁策冊蚕至私姿視詞誌磁射捨尺若樹収宗就衆従縦縮熟純処署諸除将傷障蒸針仁垂推寸盛聖誠宣専泉洗染善奏窓創装層操蔵臓存尊宅担探誕段暖値宙忠著庁頂潮賃痛展討党糖届難乳認納脳派拝背肺俳班晩否批秘腹奮並陛閉片補暮宝訪亡忘棒枚幕密盟模訳郵優預幼欲翌乱卵覧裏律臨朗論",
+    4: "愛案以衣位茨印英栄媛塩岡億加果貨課芽賀改械害街各覚潟完官管関観願岐希季旗器機議求泣給挙漁共協鏡競極熊訓軍郡群径景芸欠結建健験固功好香候康佐差菜最埼材崎昨札刷察参産散残氏司試児治滋辞鹿失借種周祝順初松笑唱焼照城縄臣信井成省清静席積折節説浅戦選然争倉巣束側続卒孫帯隊達単置仲沖兆低底的典伝徒努灯働特徳栃奈梨熱念敗梅博阪飯飛必票標不夫付府阜富副兵別辺変便包法望牧末満未民無約勇要養浴利陸良料量輪類令冷例連老労録",
+    5: "圧囲移因永営衛易益液演応往桜可仮価河過快解格確額刊幹慣眼紀基寄規喜技義逆久旧救居許境均禁句型経潔件険検限現減故個護効厚耕航鉱構興講告混査再災妻採際在財罪殺雑酸賛士支史志枝師資飼示似識質舎謝授修述術準序招証象賞条状常情織職制性政勢精製税責績接設絶祖素総造像増則測属率損貸態団断築貯張停提程適統堂銅導得毒独任燃能破犯判版比肥非費備評貧布婦武復複仏粉編弁保墓報豊防貿暴脈務夢迷綿輸余容略留領歴",
+    6: "胃異遺域宇映延沿恩我灰拡革閣割株干巻看簡危机揮貴疑吸供胸郷勤筋系敬警劇激穴券絹権憲源厳己呼誤后孝皇紅降鋼刻穀骨困砂座済裁策冊蚕至私姿視詞誌磁射捨尺若樹収宗就衆従縦縮熟純処署諸除承将傷障蒸針仁垂推寸盛聖誠舌宣専泉洗染銭善奏窓創装層操蔵臓存尊退宅担探誕段暖値宙忠著庁頂腸潮賃痛敵展討党糖届難乳認納脳派拝背肺俳班晩否批秘俵腹奮並陛閉片補暮宝訪亡忘棒枚幕密盟模訳郵優預幼欲翌乱卵覧裏律臨朗論",
   };
   const gradeOf = new Map();
   Object.entries(GRADE_KANJI).forEach(([g, chars]) => [...chars].forEach((c) => gradeOf.set(c, Number(g))));
 
-  const SAMPLE_DATA = [
+  let SAMPLE_DATA = [
     { id: 1, grade: 3, kanji: "港", yomi: "みなと", sentence: "大[おお]きな船[ふね]が{{港[みなと]}}にとまる。" },
     { id: 2, grade: 3, kanji: "港", yomi: "こう", sentence: "朝[あさ]、{{港[こう]}}内[ない]を歩[ある]く。" },
     { id: 3, grade: 3, kanji: "橋", yomi: "はし", sentence: "川[かわ]にかかる{{橋[はし]}}をわたる。" },
@@ -34,13 +34,13 @@
     { id: 12, grade: 3, kanji: "球", yomi: "きゅう", sentence: "地[ち]{{球[きゅう]}}の形[かたち]を調[しら]べる。" },
   ];
 
-  const defaults = {
-    url: "", displayGrade: 2, quizGrade: 3, title: "かん字 小テスト", mode: "mixed",
-    activeTab: "question", data: SAMPLE_DATA, selected: ["1", "3", "4", "5", "6", "8", "9", "10", "11", "12"],
-    choices: {}, order: ["港", "橋", "緑", "温", "泳", "習", "旅", "深", "薬", "球"], lastLoaded: "サンプルデータ",
-  };
-  let state = loadState();
-  let dragKanji = null;
+  let defaults;
+  let state;
+  let dragKey = null;
+  let accessToken = "";
+  let syncTimer = null;
+  let panelScroll = 0;
+  let orderScroll = 0;
 
   function visitorId() {
     let id = localStorage.getItem(VISITOR_KEY);
@@ -54,7 +54,17 @@
   function loadState() {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-      if (saved && Array.isArray(saved.data)) return { ...defaults, ...saved };
+      if (saved && Array.isArray(saved.data)) {
+        const migrated = { ...defaults, ...saved };
+        if (!Array.isArray(saved.writeKanjis)) {
+          const oldOrder = Array.isArray(saved.order) ? saved.order : [];
+          migrated.writeKanjis = oldOrder.filter((_, i) => i % 2 === 0);
+          migrated.readKanjis = oldOrder.filter((_, i) => i % 2 === 1);
+          migrated.order = oldOrder.map((kanji, i) => `${i % 2 === 0 ? "write" : "read"}:${kanji}`);
+        }
+        if (String(migrated.lastLoaded || "").startsWith("サンプルデータ")) migrated.data = SAMPLE_DATA;
+        return migrated;
+      }
     } catch (_) {}
     return structuredClone(defaults);
   }
@@ -72,16 +82,15 @@
     });
     return map;
   }
-  function selectedRows() {
+  function selectedItems() {
     const groups = uniqueKanjis();
-    return state.order.map((kanji) => {
+    return state.order.map((key) => {
+      const [type, kanji] = key.split(":");
       const rows = groups.get(kanji) || [];
-      const chosenId = String(state.choices[kanji] || "");
-      return rows.find((r) => String(r.id) === chosenId) || rows.find((r) => state.selected.includes(String(r.id))) || rows[0];
+      const chosenId = String(state.choices[key] || "");
+      const row = rows.find((r) => String(r.id) === chosenId) || rows[0];
+      return row ? { key, type, row } : null;
     }).filter(Boolean).slice(0, MAX_QUESTIONS);
-  }
-  function modeFor(index) {
-    return state.mode === "mixed" ? (index % 2 === 0 ? "write" : "read") : state.mode;
   }
 
   function parseSentence(sentence) {
@@ -113,26 +122,31 @@
 
   function renderApp(message) {
     const root = document.getElementById("kanji-app");
+    panelScroll = document.querySelector(".control-panel")?.scrollTop ?? panelScroll;
+    orderScroll = document.querySelector(".order-list")?.scrollTop ?? orderScroll;
     const groups = uniqueKanjis();
-    const rows = selectedRows();
-    const selectedSet = new Set(state.order);
+    const items = selectedItems();
     const gradeOptions = [...Array(6)].map((_, i) => `<option value="${i + 1}" ${Number(state.quizGrade) === i + 1 ? "selected" : ""}>${i + 1}年生</option>`).join("");
     const displayOptions = [`<option value="0" ${Number(state.displayGrade) === 0 ? "selected" : ""}>すべてひらがな</option>`]
       .concat([...Array(6)].map((_, i) => `<option value="${i + 1}" ${Number(state.displayGrade) === i + 1 ? "selected" : ""}>${i + 1}年生まで</option>`)).join("");
-    const kanjiItems = [...groups.entries()].map(([kanji, entries]) => `
-      <label class="kanji-choice ${selectedSet.has(kanji) ? "checked" : ""}">
-        <input type="checkbox" data-kanji="${esc(kanji)}" ${selectedSet.has(kanji) ? "checked" : ""}>
+    const gridFor = (type) => [...groups.entries()].map(([kanji, entries]) => {
+      const checked = state.order.includes(`${type}:${kanji}`);
+      return `<label class="kanji-choice ${checked ? "checked" : ""}">
+        <input type="checkbox" data-kanji="${esc(kanji)}" data-question-type="${type}" ${checked ? "checked" : ""}>
         <span class="kanji-glyph">${esc(kanji)}</span><span class="kanji-yomi">${esc(entries[0].yomi)}</span>
-      </label>`).join("") || `<div class="empty-small">この学年のデータはありません</div>`;
-    const orderItems = rows.map((row, index) => {
+      </label>`;
+    }).join("") || `<div class="empty-small">この学年のデータはありません</div>`;
+    const orderItems = items.map((item, index) => {
+      const { row, type, key } = item;
       const variants = groups.get(row.kanji) || [];
-      return `<li class="order-item" draggable="true" data-order-kanji="${esc(row.kanji)}">
-        <span class="drag" aria-hidden="true">⠿</span><b>${index + 1}</b><span class="order-kanji">${esc(row.kanji)}</span>
-        ${variants.length > 1 ? `<select class="sentence-select" data-choice="${esc(row.kanji)}" aria-label="${esc(row.kanji)}の例文">${variants.map((v) => `<option value="${esc(v.id)}" ${String(v.id) === String(row.id) ? "selected" : ""}>${esc(stripNotation(v.sentence)).slice(0, 18)}</option>`).join("")}</select>` : `<span class="sentence-snippet">${esc(stripNotation(row.sentence))}</span>`}
+      return `<li class="order-item" draggable="true" data-order-key="${esc(key)}">
+        <span class="drag" aria-hidden="true">⠿</span><b>${index + 1}</b><span class="type-chip ${type}">${type === "write" ? "書" : "読"}</span><span class="order-kanji">${esc(row.kanji)}</span>
+        ${variants.length > 1 ? `<select class="sentence-select" data-choice="${esc(key)}" aria-label="${esc(row.kanji)}の例文">${variants.map((v) => `<option value="${esc(v.id)}" ${String(v.id) === String(row.id) ? "selected" : ""}>${esc(stripNotation(v.sentence)).slice(0, 18)}</option>`).join("")}</select>` : `<span class="sentence-snippet">${esc(stripNotation(row.sentence))}</span>`}
         <span class="move-buttons"><button data-move="up" data-index="${index}" aria-label="上へ">↑</button><button data-move="down" data-index="${index}" aria-label="下へ">↓</button></span>
       </li>`;
     }).join("");
-    const density = rows.length > 15 ? "dense" : rows.length > 10 ? "compact" : "standard";
+    const density = items.length > 15 ? "dense" : items.length > 10 ? "compact" : "standard";
+    const sheetConnected = Boolean(state.sheetId);
 
     root.innerHTML = `<div class="app-shell">
       <header class="topbar">
@@ -142,22 +156,23 @@
       <div class="workspace">
         <aside class="control-panel">
           <section class="panel-section data-section">
-            <div class="section-heading"><span class="step">1</span><div><h2>例文データ</h2><p>GAS JSON または公開CSV</p></div></div>
-            <div class="url-row"><input id="dataUrl" type="url" placeholder="https://..." value="${esc(state.url)}"><button id="loadButton">読み込む</button></div>
-            <button class="sample-export" id="exportSampleButton"><span>↓</span><b>サンプルスプレッドシートを書き出す</b><small>Googleスプレッドシートで開けるCSV形式</small></button>
+            <div class="section-heading"><span class="step">1</span><div><h2>例文データ</h2><p>Googleスプレッドシートと自動同期</p></div></div>
+            <button class="google-sheet-button" id="googleSheetButton"><span>G</span><b>${sheetConnected ? "Googleに接続して同期" : "専用スプレッドシートを作成"}</b><small>${sheetConnected ? "編集内容を今すぐ反映します" : "あなたのGoogleドライブに作成します"}</small></button>
+            ${sheetConnected ? `<div class="sheet-actions"><a href="${esc(state.sheetUrl)}" target="_blank" rel="noopener">スプレッドシートを開く ↗</a><span>30秒ごとに自動同期</span></div>` : ""}
+            <details class="legacy-source"><summary>公開CSV・GAS URLを使う</summary><div class="url-row"><input id="dataUrl" type="url" placeholder="https://..." value="${esc(state.url)}"><button id="loadButton">読み込む</button></div></details>
             <div class="load-status ${message && message.type === "error" ? "error" : ""}"><span>${message?.type === "error" ? "!" : "✓"}</span><div>${message ? esc(message.text) : `${state.data.length}件の例文を利用できます`}<small>最終取得：${esc(state.lastLoaded || "未取得")}</small></div></div>
           </section>
           <section class="panel-section">
             <div class="section-heading"><span class="step">2</span><h2>出題の設定</h2></div>
             <label class="field"><span>小テストに表示する漢字は何年生までか</span><select id="displayGrade">${displayOptions}</select></label>
-            <label class="field"><span>出題する漢字の学年</span><select id="quizGrade">${gradeOptions}</select></label>
-            <label class="field"><span>問題の形式</span><select id="quizMode"><option value="write" ${state.mode === "write" ? "selected" : ""}>書き問題</option><option value="read" ${state.mode === "read" ? "selected" : ""}>読み問題</option><option value="mixed" ${state.mode === "mixed" ? "selected" : ""}>書き・読み混在</option></select></label>
             <label class="field"><span>テストのタイトル</span><input id="quizTitle" maxlength="30" value="${esc(state.title)}"></label>
           </section>
           <section class="panel-section grow">
-            <div class="list-heading"><div class="section-heading"><span class="step">3</span><h2>漢字を選ぶ</h2></div><span class="count-badge">${rows.length} / ${MAX_QUESTIONS}問</span></div>
-            <div class="bulk-actions"><button id="selectAll">全選択</button><button id="clearAll">全解除</button><span>最大20問</span></div>
-            <div class="kanji-grid">${kanjiItems}</div>
+            <div class="list-heading"><div class="section-heading"><span class="step">3</span><h2>漢字を選ぶ</h2></div><span class="count-badge">${items.length} / ${MAX_QUESTIONS}問</span></div>
+            <label class="field inline-grade"><span>(1) 出題する学年</span><select id="quizGrade">${gradeOptions}</select></label>
+            <div class="question-picker"><div class="picker-heading"><b>(2)-1 書き問題を出題</b><span>${state.writeKanjis.length}問</span></div><div class="kanji-grid">${gridFor("write")}</div></div>
+            <div class="question-picker read-picker"><div class="picker-heading"><b>(2)-2 読み問題を出題</b><span>${state.readKanjis.length}問</span></div><div class="kanji-grid">${gridFor("read")}</div></div>
+            <button class="clear-selection" id="clearAll">選択をすべて解除</button>
           </section>
           <section class="panel-section order-section">
             <div class="section-heading"><span class="step">4</span><div><h2>順番・例文</h2><p>つかんで並べ替え</p></div></div>
@@ -170,13 +185,17 @@
             ${state.activeTab === "answer" ? `<div class="answer-ribbon">模範解答</div>` : ""}
             <header class="paper-header"><h2>${esc(state.title || "かん字 小テスト")}</h2><div class="student-fields"><span><b>年</b></span><span><b>組</b></span><span><b>番号</b></span><span class="name-field"><b>名前</b></span></div></header>
             <div class="paper-rule"></div>
-            <div class="questions ${rows.length ? "" : "empty-preview"}">${rows.length ? rows.map((row, i) => `<div class="question-column"><span class="question-no">${i + 1}</span><p>${renderSentence(row, modeFor(i), state.activeTab === "answer")}</p><span class="mode-label">${modeFor(i) === "write" ? "書" : "読"}</span></div>`).join("") : `<div><span class="empty-mark">字</span><h3>漢字を選ぶと、ここに問題が並びます</h3><p>左の一覧から出題したい漢字を選んでください。</p></div>`}</div>
-            <footer class="paper-footer"><span>${rows.length}問</span><span>こつこつ がんばろう</span></footer>
+            <div class="questions ${items.length ? "" : "empty-preview"}">${items.length ? items.map((item, i) => `<div class="question-column"><span class="question-no">${i + 1}</span><p>${renderSentence(item.row, item.type, state.activeTab === "answer")}</p><span class="mode-label">${item.type === "write" ? "書" : "読"}</span></div>`).join("") : `<div><span class="empty-mark">字</span><h3>漢字を選ぶと、ここに問題が並びます</h3><p>左の一覧から出題したい漢字を選んでください。</p></div>`}</div>
+            <footer class="paper-footer"><span>${items.length}問</span><span>こつこつ がんばろう</span></footer>
           </article></div>
         </section>
       </div>
     </div>`;
     bindEvents();
+    requestAnimationFrame(() => {
+      const panel = document.querySelector(".control-panel"); if (panel) panel.scrollTop = panelScroll;
+      const list = document.querySelector(".order-list"); if (list) list.scrollTop = orderScroll;
+    });
     saveState();
   }
 
@@ -186,51 +205,37 @@
   function bindEvents() {
     document.getElementById("displayGrade").onchange = (e) => setAndRender("displayGrade", Number(e.target.value));
     document.getElementById("quizGrade").onchange = (e) => {
-      state.quizGrade = Number(e.target.value); state.order = []; state.selected = []; state.choices = {}; renderApp();
+      state.quizGrade = Number(e.target.value); state.order = []; state.writeKanjis = []; state.readKanjis = []; state.choices = {}; renderApp();
     };
-    document.getElementById("quizMode").onchange = (e) => setAndRender("mode", e.target.value);
     document.getElementById("quizTitle").oninput = (e) => { state.title = e.target.value; document.querySelector(".paper-header h2").textContent = state.title || "かん字 小テスト"; saveState(); };
     document.getElementById("dataUrl").oninput = (e) => { state.url = e.target.value; saveState(); };
     document.getElementById("loadButton").onclick = loadRemote;
-    document.getElementById("exportSampleButton").onclick = exportSampleSheet;
+    document.getElementById("googleSheetButton").onclick = handleGoogleSheet;
     document.getElementById("printButton").onclick = () => window.print();
     document.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => setAndRender("activeTab", b.dataset.tab));
-    document.querySelectorAll("[data-kanji]").forEach((box) => box.onchange = () => toggleKanji(box.dataset.kanji, box.checked));
-    document.getElementById("selectAll").onclick = () => {
-      const keys = [...uniqueKanjis().keys()].slice(0, MAX_QUESTIONS); state.order = keys; state.selected = keys.map((k) => String(uniqueKanjis().get(k)[0].id)); renderApp(keys.length < uniqueKanjis().size ? { type: "error", text: "最大20問まで選択しました" } : null);
-    };
-    document.getElementById("clearAll").onclick = () => { state.order = []; state.selected = []; renderApp(); };
+    document.querySelectorAll("[data-kanji]").forEach((box) => box.onchange = () => toggleKanji(box.dataset.questionType, box.dataset.kanji, box.checked));
+    document.getElementById("clearAll").onclick = () => { state.order = []; state.writeKanjis = []; state.readKanjis = []; state.choices = {}; renderApp(); };
     document.querySelectorAll("[data-choice]").forEach((select) => select.onchange = () => { state.choices[select.dataset.choice] = select.value; renderApp(); });
     document.querySelectorAll("[data-move]").forEach((b) => b.onclick = () => moveItem(Number(b.dataset.index), b.dataset.move === "up" ? -1 : 1));
-    document.querySelectorAll("[data-order-kanji]").forEach((item) => {
-      item.ondragstart = () => { dragKanji = item.dataset.orderKanji; item.classList.add("dragging"); };
+    document.querySelectorAll("[data-order-key]").forEach((item) => {
+      item.ondragstart = () => { dragKey = item.dataset.orderKey; item.classList.add("dragging"); };
       item.ondragend = () => item.classList.remove("dragging");
       item.ondragover = (e) => e.preventDefault();
-      item.ondrop = (e) => { e.preventDefault(); reorder(dragKanji, item.dataset.orderKanji); };
+      item.ondrop = (e) => { e.preventDefault(); reorder(dragKey, item.dataset.orderKey); };
     });
   }
 
-  function exportSampleSheet() {
-    const headers = ["id", "grade", "kanji", "yomi", "sentence"];
-    const quote = (value) => `"${String(value).replace(/"/g, '""')}"`;
-    const csv = [headers.join(","), ...SAMPLE_DATA.map((row) => headers.map((key) => quote(row[key])).join(","))].join("\r\n");
-    const blob = new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `kanji-sample-${visitorId()}.csv`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    renderApp({ type: "success", text: "あなた専用のサンプルCSVを書き出しました" });
-  }
-  function toggleKanji(kanji, checked) {
-    if (checked && !state.order.includes(kanji)) {
+  function toggleKanji(type, kanji, checked) {
+    const key = `${type}:${kanji}`;
+    const list = type === "write" ? state.writeKanjis : state.readKanjis;
+    if (checked && !state.order.includes(key)) {
       if (state.order.length >= MAX_QUESTIONS) return renderApp({ type: "error", text: "問題は最大20問までです" });
-      state.order.push(kanji);
-      const row = uniqueKanjis().get(kanji)?.[0]; if (row) state.selected.push(String(row.id));
-    } else if (!checked) state.order = state.order.filter((k) => k !== kanji);
+      list.push(kanji); state.order.push(key);
+    } else if (!checked) {
+      state.order = state.order.filter((k) => k !== key);
+      const index = list.indexOf(kanji); if (index >= 0) list.splice(index, 1);
+      delete state.choices[key];
+    }
     renderApp();
   }
   function moveItem(index, delta) {
@@ -256,7 +261,7 @@
       if (!Array.isArray(source)) throw new Error("配列形式のデータが見つかりません");
       const result = validateRows(source);
       if (!result.valid.length) throw new Error(result.errors[0] || "有効な行がありません");
-      state.data = result.valid; state.quizGrade = result.valid[0].grade; state.order = []; state.selected = []; state.choices = {};
+      state.data = result.valid; state.quizGrade = result.valid[0].grade; state.order = []; state.writeKanjis = []; state.readKanjis = []; state.choices = {};
       state.lastLoaded = new Intl.DateTimeFormat("ja-JP", { dateStyle: "short", timeStyle: "short" }).format(new Date());
       renderApp({ type: result.errors.length ? "error" : "success", text: `${result.valid.length}件を読み込みました${result.errors.length ? `（${result.errors.length}件を除外）` : ""}` });
     } catch (err) { renderApp({ type: "error", text: `読み込めませんでした。既存データを保持しています（${err.message}）` }); }
@@ -295,5 +300,147 @@
     return { valid, errors };
   }
 
-  renderApp();
+  function nowLabel() {
+    return new Intl.DateTimeFormat("ja-JP", { dateStyle: "short", timeStyle: "short" }).format(new Date());
+  }
+
+  function buildSampleData(readings) {
+    let id = 1;
+    return Object.entries(GRADE_KANJI).flatMap(([grade, chars]) => [...chars].map((kanji) => {
+      const yomi = readings[kanji];
+      return { id: id++, grade: Number(grade), kanji, yomi, sentence: `「${yomi}」と読[よ]む{{${kanji}[${yomi}]}}を練習[れんしゅう]する。` };
+    }));
+  }
+
+  function waitForGoogleIdentity() {
+    return new Promise((resolve, reject) => {
+      let attempts = 0;
+      const check = () => {
+        if (window.google?.accounts?.oauth2) return resolve();
+        if (++attempts > 50) return reject(new Error("Googleログインを読み込めませんでした"));
+        setTimeout(check, 100);
+      };
+      check();
+    });
+  }
+
+  async function authorizeGoogle() {
+    const clientId = document.querySelector('meta[name="google-oauth-client-id"]')?.content?.trim();
+    if (!clientId) throw new Error("Google OAuthクライアントIDが未設定です");
+    await waitForGoogleIdentity();
+    return new Promise((resolve, reject) => {
+      const client = google.accounts.oauth2.initTokenClient({
+        client_id: clientId,
+        scope: "https://www.googleapis.com/auth/drive.file",
+        callback: (response) => {
+          if (response.error) return reject(new Error(response.error_description || response.error));
+          accessToken = response.access_token;
+          resolve(accessToken);
+        },
+        error_callback: (error) => reject(new Error(error.message || error.type || "Googleログインを完了できませんでした")),
+      });
+      client.requestAccessToken({ prompt: accessToken ? "" : "consent" });
+    });
+  }
+
+  async function googleFetch(url, options = {}) {
+    const response = await fetch(url, {
+      ...options,
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`, ...(options.headers || {}) },
+    });
+    if (response.status === 401) accessToken = "";
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.error?.message || `Google API HTTP ${response.status}`);
+    }
+    return response.json();
+  }
+
+  async function createPersonalSheet() {
+    const created = await googleFetch("https://sheets.googleapis.com/v4/spreadsheets", {
+      method: "POST",
+      body: JSON.stringify({
+        properties: { title: `漢字こつこつ 例文データ ${visitorId()}`, locale: "ja_JP" },
+        sheets: [{ properties: { title: "例文データ", gridProperties: { rowCount: 1100, columnCount: 5, frozenRowCount: 1 } } }],
+      }),
+    });
+    const values = [["id", "grade", "kanji", "yomi", "sentence"], ...SAMPLE_DATA.map((row) => [row.id, row.grade, row.kanji, row.yomi, row.sentence])];
+    await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${created.spreadsheetId}/values/${encodeURIComponent("例文データ!A1:E1027")}?valueInputOption=RAW`, {
+      method: "PUT", body: JSON.stringify({ range: "例文データ!A1:E1027", majorDimension: "ROWS", values }),
+    });
+    state.sheetId = created.spreadsheetId;
+    state.sheetUrl = created.spreadsheetUrl || `https://docs.google.com/spreadsheets/d/${created.spreadsheetId}/edit`;
+    state.lastLoaded = `${nowLabel()}（Googleスプレッドシート作成）`;
+    saveState();
+  }
+
+  async function syncFromSheet({ silent = false } = {}) {
+    if (!state.sheetId || !accessToken) return;
+    try {
+      const result = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}/values/${encodeURIComponent("例文データ!A:E")}`);
+      const [headers = [], ...values] = result.values || [];
+      const rows = values.map((cells) => Object.fromEntries(headers.map((header, i) => [header, cells[i] ?? ""])));
+      const checked = validateRows(rows);
+      if (!checked.valid.length) throw new Error(checked.errors[0] || "有効な例文がありません");
+      state.data = checked.valid;
+      const available = new Set(checked.valid.filter((row) => row.grade === Number(state.quizGrade)).map((row) => row.kanji));
+      state.writeKanjis = state.writeKanjis.filter((kanji) => available.has(kanji));
+      state.readKanjis = state.readKanjis.filter((kanji) => available.has(kanji));
+      state.order = state.order.filter((key) => available.has(key.split(":")[1]));
+      state.lastLoaded = `${nowLabel()}（Google同期）`;
+      renderApp(silent ? undefined : { type: checked.errors.length ? "error" : "success", text: `${checked.valid.length}件を同期しました${checked.errors.length ? `（${checked.errors.length}件を除外）` : ""}` });
+    } catch (error) {
+      renderApp({ type: "error", text: `同期できませんでした。既存データを保持しています（${error.message}）` });
+    }
+  }
+
+  function startSyncTimer() {
+    clearInterval(syncTimer);
+    syncTimer = setInterval(() => syncFromSheet({ silent: true }), 30000);
+  }
+
+  async function handleGoogleSheet() {
+    const button = document.getElementById("googleSheetButton");
+    button.disabled = true;
+    try {
+      await authorizeGoogle();
+      if (!state.sheetId) {
+        await createPersonalSheet();
+        window.open(state.sheetUrl, "_blank", "noopener");
+      }
+      await syncFromSheet();
+      startSyncTimer();
+    } catch (error) {
+      renderApp({ type: "error", text: `Googleスプレッドシートを利用できません（${error.message}）` });
+    }
+  }
+
+  async function init() {
+    try {
+      const response = await fetch("/kanji-readings.json", { cache: "force-cache" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const readings = await response.json();
+      SAMPLE_DATA = buildSampleData(readings);
+    } catch (error) {
+      console.error("1026字サンプルを読み込めませんでした", error);
+    }
+    const gradeOne = [...GRADE_KANJI[1]];
+    defaults = {
+      url: "", displayGrade: 2, quizGrade: 1, title: "かん字 小テスト", activeTab: "question",
+      data: SAMPLE_DATA, writeKanjis: gradeOne.slice(0, 5), readKanjis: gradeOne.slice(5, 10), choices: {},
+      order: [...gradeOne.slice(0, 5).map((kanji) => `write:${kanji}`), ...gradeOne.slice(5, 10).map((kanji) => `read:${kanji}`)],
+      sheetId: "", sheetUrl: "", lastLoaded: `サンプルデータ（${SAMPLE_DATA.length}件）`,
+    };
+    state = loadState();
+    state.writeKanjis ||= [];
+    state.readKanjis ||= [];
+    state.order ||= [];
+    state.choices ||= {};
+    renderApp();
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && accessToken && state.sheetId) syncFromSheet({ silent: true });
+    });
+  }
+
+  init();
 })();
