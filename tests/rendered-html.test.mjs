@@ -35,6 +35,10 @@ test("主要な要件をクライアント実装と印刷CSSに含む", async ()
   assert.match(script, /localStorage/);
   assert.match(script, /parseCSV/);
   assert.match(script, /validateRows/);
+  assert.match(script, /サンプルスプレッドシートを書き出す/);
+  assert.match(script, /function exportSampleSheet/);
+  assert.match(script, /kanji-sample-\$\{visitorId\(\)\}\.csv/);
+  assert.match(script, /VISITOR_KEY/);
   assert.match(css, /writing-mode:vertical-rl/);
   assert.match(css, /@page \{ size:A4 landscape/);
 });

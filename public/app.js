@@ -2,6 +2,7 @@
   "use strict";
 
   const STORAGE_KEY = "kanji-kotsukotsu-v1";
+  const VISITOR_KEY = "kanji-kotsukotsu-visitor-id";
   const MAX_QUESTIONS = 20;
   const HIRAGANA = /^[ぁ-ゖー]+$/;
   const KANJI = /^[\u3400-\u9fff々]+$/;
@@ -40,6 +41,15 @@
   };
   let state = loadState();
   let dragKanji = null;
+
+  function visitorId() {
+    let id = localStorage.getItem(VISITOR_KEY);
+    if (!id) {
+      id = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`).replace(/-/g, "").slice(0, 12);
+      localStorage.setItem(VISITOR_KEY, id);
+    }
+    return id;
+  }
 
   function loadState() {
     try {
@@ -134,6 +144,7 @@
           <section class="panel-section data-section">
             <div class="section-heading"><span class="step">1</span><div><h2>例文データ</h2><p>GAS JSON または公開CSV</p></div></div>
             <div class="url-row"><input id="dataUrl" type="url" placeholder="https://..." value="${esc(state.url)}"><button id="loadButton">読み込む</button></div>
+            <button class="sample-export" id="exportSampleButton"><span>↓</span><b>サンプルスプレッドシートを書き出す</b><small>Googleスプレッドシートで開けるCSV形式</small></button>
             <div class="load-status ${message && message.type === "error" ? "error" : ""}"><span>${message?.type === "error" ? "!" : "✓"}</span><div>${message ? esc(message.text) : `${state.data.length}件の例文を利用できます`}<small>最終取得：${esc(state.lastLoaded || "未取得")}</small></div></div>
           </section>
           <section class="panel-section">
@@ -181,6 +192,7 @@
     document.getElementById("quizTitle").oninput = (e) => { state.title = e.target.value; document.querySelector(".paper-header h2").textContent = state.title || "かん字 小テスト"; saveState(); };
     document.getElementById("dataUrl").oninput = (e) => { state.url = e.target.value; saveState(); };
     document.getElementById("loadButton").onclick = loadRemote;
+    document.getElementById("exportSampleButton").onclick = exportSampleSheet;
     document.getElementById("printButton").onclick = () => window.print();
     document.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => setAndRender("activeTab", b.dataset.tab));
     document.querySelectorAll("[data-kanji]").forEach((box) => box.onchange = () => toggleKanji(box.dataset.kanji, box.checked));
@@ -196,6 +208,22 @@
       item.ondragover = (e) => e.preventDefault();
       item.ondrop = (e) => { e.preventDefault(); reorder(dragKanji, item.dataset.orderKanji); };
     });
+  }
+
+  function exportSampleSheet() {
+    const headers = ["id", "grade", "kanji", "yomi", "sentence"];
+    const quote = (value) => `"${String(value).replace(/"/g, '""')}"`;
+    const csv = [headers.join(","), ...SAMPLE_DATA.map((row) => headers.map((key) => quote(row[key])).join(","))].join("\r\n");
+    const blob = new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `kanji-sample-${visitorId()}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    renderApp({ type: "success", text: "あなた専用のサンプルCSVを書き出しました" });
   }
   function toggleKanji(kanji, checked) {
     if (checked && !state.order.includes(kanji)) {
