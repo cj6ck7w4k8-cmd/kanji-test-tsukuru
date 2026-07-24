@@ -38,6 +38,7 @@
   let state;
   let dragKey = null;
   let accessToken = "";
+  let googleClientId = "";
   let syncTimer = null;
   let panelScroll = 0;
   let orderScroll = 0;
@@ -325,7 +326,7 @@
   }
 
   async function authorizeGoogle() {
-    const clientId = document.querySelector('meta[name="google-oauth-client-id"]')?.content?.trim();
+    const clientId = await getGoogleClientId();
     if (!clientId) throw new Error("Google OAuthクライアントIDが未設定です");
     await waitForGoogleIdentity();
     return new Promise((resolve, reject) => {
@@ -341,6 +342,17 @@
       });
       client.requestAccessToken({ prompt: accessToken ? "" : "consent" });
     });
+  }
+
+  async function getGoogleClientId() {
+    if (googleClientId) return googleClientId;
+    const embedded = document.querySelector('meta[name="google-oauth-client-id"]')?.content?.trim();
+    if (embedded) return googleClientId = embedded;
+    const response = await fetch("/api/config", { cache: "no-store" });
+    if (!response.ok) throw new Error("Google連携の設定を取得できませんでした");
+    const config = await response.json();
+    googleClientId = String(config.googleOAuthClientId || "").trim();
+    return googleClientId;
   }
 
   async function googleFetch(url, options = {}) {

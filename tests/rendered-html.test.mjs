@@ -36,6 +36,7 @@ test("主要な要件をクライアント実装と印刷CSSに含む", async ()
   assert.match(script, /parseCSV/);
   assert.match(script, /validateRows/);
   assert.match(script, /function createPersonalSheet/);
+  assert.match(script, /function getGoogleClientId/);
   assert.match(script, /https:\/\/www\.googleapis\.com\/auth\/drive\.file/);
   assert.match(script, /setInterval\(\(\) => syncFromSheet\(\{ silent: true \}\), 30000\)/);
   assert.match(script, /VISITOR_KEY/);
