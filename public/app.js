@@ -21,7 +21,7 @@
 
   let SAMPLE_DATA = [];
   const QUESTION_TYPES = ["write", "read"];
-  const SAMPLE_DATA_VERSION = 3;
+  const SAMPLE_DATA_VERSION = 4;
   const questionTypeLabel = { write: "書き問題用", read: "読み問題用" };
   const fullWidth = (number) => String(number).replace(/\d/g, (digit) => "０１２３４５６７８９"[Number(digit)]);
   const sheetNameFor = (grade, type) => `${fullWidth(grade)}年${questionTypeLabel[type]}`;
@@ -50,6 +50,9 @@
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
       if (saved && Array.isArray(saved.data)) {
         const migrated = { ...defaults, ...saved };
+        // Do not treat a missing version in an older localStorage record as
+        // current: it must receive the revised sample vocabulary on sync.
+        migrated.sampleDataVersion = Number(saved.sampleDataVersion || 0);
         if (!Array.isArray(saved.writeKanjis)) {
           const oldOrder = Array.isArray(saved.order) ? saved.order : [];
           migrated.writeKanjis = oldOrder.filter((_, i) => i % 2 === 0);
