@@ -427,6 +427,13 @@
         const [headers = [], ...values] = range.values || [];
         return values.map((cells) => Object.fromEntries(headers.map((header, column) => [header, cells[column] ?? ""]))).map((row) => ({ ...row, questionType: specs[index].type }));
       });
+      // Older generated sheets contained full sentences. Migrate them on
+      // read as well, so a stale localStorage version cannot restore them.
+      const hasLegacySentences = rows.some((row) => /[。！？]/.test(String(row.sentence || "")) || String(row.sentence || "").includes("という言葉"));
+      if (hasLegacySentences) {
+        await writeSampleTabs(state.sheetId);
+        return syncFromSheet({ silent });
+      }
       const checked = validateRows(rows);
       if (!checked.valid.length) throw new Error(checked.errors[0] || "有効な例文がありません");
       state.data = checked.valid;
