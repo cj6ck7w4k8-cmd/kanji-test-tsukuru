@@ -29,7 +29,7 @@ test("主要な要件をクライアント実装と印刷CSSに含む", async ()
     readFile(new URL("public/app.js", root), "utf8"),
     readFile(new URL("app/globals.css", root), "utf8"),
   ]);
-  assert.match(script, /MAX_QUESTIONS = 20/);
+  assert.match(script, /MAX_QUESTIONS = 50/);
   assert.match(script, /すべてひらがな/);
   assert.match(script, /小テストに表示する漢字は何年生までか/);
   assert.match(script, /localStorage/);

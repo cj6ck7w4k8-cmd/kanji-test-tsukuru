@@ -3,7 +3,7 @@
 
   const STORAGE_KEY = "kanji-kotsukotsu-v1";
   const VISITOR_KEY = "kanji-kotsukotsu-visitor-id";
-  const MAX_QUESTIONS = 20;
+  const MAX_QUESTIONS = 50;
   const HIRAGANA = /^[ぁ-ゖー]+$/;
   const KANJI = /^[\u3400-\u9fff々]+$/;
 
@@ -112,11 +112,19 @@
     return chars.length > 0 && chars.every((c) => gradeOf.has(c) && gradeOf.get(c) <= Number(state.displayGrade));
   }
   function renderSentence(row, qMode, answer) {
-    return parseSentence(row.sentence).map((token) => {
+    const tokens = parseSentence(row.sentence);
+    if (qMode === "read") {
+      const word = tokens.map((token) => {
+        if (token.type === "text") return esc(token.text);
+        if (token.type === "ruby") return esc(canShow(token.text) ? token.text : token.reading);
+        return `<span class="reading-target">${esc(row.kanji)}</span>`;
+      }).join("");
+      return `<span class="reading-word">${word}</span><span class="reading-answer-box${answer ? " is-answer" : ""}">${answer ? esc(row.yomi) : ""}</span>`;
+    }
+    return tokens.map((token) => {
       if (token.type === "text") return esc(token.text);
       if (token.type === "ruby") return esc(canShow(token.text) ? token.text : token.reading);
-      if (qMode === "write") return `<ruby class="write-target"><span class="answer-box${answer ? " is-answer" : ""}">${answer ? esc(row.kanji) : ""}</span><rt>${esc(row.yomi)}</rt></ruby>`;
-      return `<ruby class="reading-target"><span>${esc(row.kanji)}</span><rt><span class="reading-answer-box">${answer ? esc(row.yomi) : ""}</span></rt></ruby>`;
+      return `<span class="write-target"><span class="answer-box${answer ? " is-answer" : ""}">${answer ? esc(row.kanji) : ""}</span><span class="write-yomi">${esc(row.yomi)}</span></span>`;
     }).join("");
   }
 
@@ -147,6 +155,7 @@
       </li>`;
     }).join("");
     const density = items.length > 24 ? "ultra-dense" : items.length > 15 ? "dense" : items.length > 10 ? "compact" : "standard";
+    const rowClass = `rows-${Math.max(1, Math.ceil(items.length / 17))}`;
     const sheetConnected = Boolean(state.sheetId);
 
     root.innerHTML = `<div class="app-shell">
@@ -182,11 +191,11 @@
         </aside>
         <section class="preview-pane">
           <div class="preview-toolbar"><div class="tabs"><button data-tab="question" class="${state.activeTab === "question" ? "active" : ""}">問題用紙</button><button data-tab="answer" class="${state.activeTab === "answer" ? "active" : ""}">模範解答</button></div><div class="paper-note">A4 横・1ページ</div></div>
-          <div class="paper-wrap"><article class="test-paper ${density} ${state.activeTab === "answer" ? "answer-sheet" : ""}">
+          <div class="paper-wrap"><article class="test-paper ${density} ${rowClass} ${state.activeTab === "answer" ? "answer-sheet" : ""}">
             ${state.activeTab === "answer" ? `<div class="answer-ribbon">模範解答</div>` : ""}
             <header class="paper-header"><h2>${esc(state.title || "かん字 小テスト")}</h2><div class="student-fields"><span><b>年</b></span><span><b>組</b></span><span><b>番号</b></span><span class="name-field"><b>名前</b></span></div></header>
             <div class="paper-rule"></div>
-            <div class="questions ${items.length ? "" : "empty-preview"}">${items.length ? items.map((item, i) => `<div class="question-column"><span class="question-no">${i + 1}</span><p>${renderSentence(item.row, item.type, state.activeTab === "answer")}</p><span class="mode-label">${item.type === "write" ? "書" : "読"}</span></div>`).join("") : `<div><span class="empty-mark">字</span><h3>漢字を選ぶと、ここに問題が並びます</h3><p>左の一覧から出題したい漢字を選んでください。</p></div>`}</div>
+            <div class="questions ${items.length ? "" : "empty-preview"}">${items.length ? items.map((item, i) => `<div class="question-column"><span class="question-no">${i + 1}</span><p>${renderSentence(item.row, item.type, state.activeTab === "answer")}</p></div>`).join("") : `<div><span class="empty-mark">字</span><h3>漢字を選ぶと、ここに問題が並びます</h3><p>左の一覧から出題したい漢字を選んでください。</p></div>`}</div>
             <footer class="paper-footer"><span>${items.length}問</span><span>こつこつ がんばろう</span></footer>
           </article></div>
         </section>
@@ -231,7 +240,7 @@
     const key = `${type}:${kanji}`;
     const list = type === "write" ? state.writeKanjis : state.readKanjis;
     if (checked && !state.order.includes(key)) {
-      if (state.order.length >= MAX_QUESTIONS) return renderApp({ type: "error", text: "問題は最大20問までです" });
+      if (state.order.length >= MAX_QUESTIONS) return renderApp({ type: "error", text: `問題は最大${MAX_QUESTIONS}問までです` });
       list.push(kanji); state.order.push(key);
     } else if (!checked) {
       state.order = state.order.filter((k) => k !== key);
