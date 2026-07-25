@@ -21,7 +21,9 @@
 
   let SAMPLE_DATA = [];
   const QUESTION_TYPES = ["write", "read"];
-  const SAMPLE_DATA_VERSION = 4;
+  // Increment this when bundled sample prompts change so existing personal
+  // spreadsheets receive the revised data on their next authenticated sync.
+  const SAMPLE_DATA_VERSION = 5;
   const questionTypeLabel = { write: "書き問題用", read: "読み問題用" };
   const fullWidth = (number) => String(number).replace(/\d/g, (digit) => "０１２３４５６７８９"[Number(digit)]);
   const sheetNameFor = (grade, type) => `${fullWidth(grade)}年${questionTypeLabel[type]}`;
