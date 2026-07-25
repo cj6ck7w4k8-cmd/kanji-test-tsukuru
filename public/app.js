@@ -21,6 +21,7 @@
 
   let SAMPLE_DATA = [];
   const QUESTION_TYPES = ["write", "read"];
+  const SAMPLE_DATA_VERSION = 3;
   const questionTypeLabel = { write: "書き問題用", read: "読み問題用" };
   const fullWidth = (number) => String(number).replace(/\d/g, (digit) => "０１２３４５６７８９"[Number(digit)]);
   const sheetNameFor = (grade, type) => `${fullWidth(grade)}年${questionTypeLabel[type]}`;
@@ -149,7 +150,7 @@
       <div class="workspace">
         <aside class="control-panel">
           <section class="panel-section data-section">
-            <div class="section-heading"><span class="step">1</span><div><h2>例文データ</h2><p>Googleスプレッドシートと自動同期</p></div></div>
+            <div class="section-heading"><span class="step">1</span><div><h2>単語・熟語データ</h2><p>Googleスプレッドシートと自動同期</p></div></div>
             <button class="google-sheet-button" id="googleSheetButton"><span>G</span><b>${sheetConnected ? "Googleに接続して同期" : "専用スプレッドシートを作成"}</b><small>${sheetConnected ? "編集内容を今すぐ反映します" : "あなたのGoogleドライブに作成します"}</small></button>
             ${sheetConnected ? `<div class="sheet-actions"><a href="${esc(state.sheetUrl)}" target="_blank" rel="noopener">スプレッドシートを開く ↗</a><span>30秒ごとに自動同期</span></div>` : ""}
             <details class="legacy-source"><summary>公開CSV・GAS URLを使う</summary><div class="url-row"><input id="dataUrl" type="url" placeholder="https://..." value="${esc(state.url)}"><button id="loadButton">読み込む</button></div></details>
@@ -365,6 +366,7 @@
     state.sheetId = created.spreadsheetId;
     state.sheetUrl = created.spreadsheetUrl || `https://docs.google.com/spreadsheets/d/${created.spreadsheetId}/edit`;
     state.sheetSchemaVersion = 2;
+    state.sampleDataVersion = SAMPLE_DATA_VERSION;
     state.lastLoaded = `${nowLabel()}（Googleスプレッドシート作成）`;
     saveState();
   }
@@ -388,12 +390,13 @@
     const existing = new Map((metadata.sheets || []).map((sheet) => [sheet.properties.title, sheet.properties]));
     const specs = sheetSpecs();
     const missing = specs.filter(({ title }) => !existing.has(title));
-    if (!missing.length) { state.sheetSchemaVersion = 2; return; }
-    await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}:batchUpdate`, {
-      method: "POST",
-      body: JSON.stringify({ requests: missing.map(({ title, grade }) => ({ addSheet: { properties: { title, gridProperties: { rowCount: GRADE_KANJI[grade].length + 1, columnCount: 5, frozenRowCount: 1 } } } })) }),
-    });
-    await writeSampleTabs(state.sheetId, missing);
+    if (missing.length) {
+      await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}:batchUpdate`, {
+        method: "POST",
+        body: JSON.stringify({ requests: missing.map(({ title, grade }) => ({ addSheet: { properties: { title, gridProperties: { rowCount: GRADE_KANJI[grade].length + 1, columnCount: 5, frozenRowCount: 1 } } } })) }),
+      });
+      await writeSampleTabs(state.sheetId, missing);
+    }
     const legacy = existing.get("例文データ");
     if (legacy) {
       await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}:batchUpdate`, {
@@ -401,7 +404,9 @@
         body: JSON.stringify({ requests: [{ updateSheetProperties: { properties: { sheetId: legacy.sheetId, title: "旧例文データ（バックアップ）", hidden: true }, fields: "title,hidden" } }] }),
       });
     }
+    if (state.sampleDataVersion !== SAMPLE_DATA_VERSION) await writeSampleTabs(state.sheetId);
     state.sheetSchemaVersion = 2;
+    state.sampleDataVersion = SAMPLE_DATA_VERSION;
     saveState();
   }
 
@@ -465,7 +470,7 @@
       url: "", displayGrade: 2, quizGrade: 1, title: "かん字 小テスト", activeTab: "question",
       data: SAMPLE_DATA, writeKanjis: gradeOne.slice(0, 5), readKanjis: gradeOne.slice(5, 10), choices: {},
       order: [...gradeOne.slice(0, 5).map((kanji) => `write:${kanji}`), ...gradeOne.slice(5, 10).map((kanji) => `read:${kanji}`)],
-      sheetId: "", sheetUrl: "", sheetSchemaVersion: 2, lastLoaded: `サンプルデータ（${SAMPLE_DATA.length}件）`,
+      sheetId: "", sheetUrl: "", sheetSchemaVersion: 2, sampleDataVersion: SAMPLE_DATA_VERSION, lastLoaded: `サンプルデータ（${SAMPLE_DATA.length}件）`,
     };
     state = loadState();
     state.writeKanjis ||= [];

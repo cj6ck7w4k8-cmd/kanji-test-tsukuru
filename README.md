@@ -29,6 +29,6 @@ NEXT_PUBLIC_GOOGLE_CLIENT_ID=xxxx.apps.googleusercontent.com
 ## データ出典
 
 - 漢字と配当学年: 文部科学省「学年別漢字配当表」（1,026字）
-- 例文・語例の基礎データ: [KanjiTest.Online Open Source Kanji Data](https://www.kanjitest.online/open-source/)（MIT License）
+- 語例の基礎データ: [Kanji Alive language data](https://github.com/kanjialive/kanji-data-media)（CC BY 4.0）
 
-サンプルは訓読みを優先し、対象漢字と読みを `{{漢字[よみ]}}` で明示しています。作成されたGoogleスプレッドシート上で、授業に合わせて例文を編集できます。
+サンプルは訓読みを優先した短い単語・熟語です。対象漢字と読みは `{{漢字[よみ]}}` で明示しており、送り仮名はマスの外に残ります。作成されたGoogleスプレッドシート上で、授業に合わせて語例を編集できます。

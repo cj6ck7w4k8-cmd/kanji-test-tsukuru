@@ -14,29 +14,25 @@ const gradeKanji = {
 };
 
 const fallbacks = {
-  "分": ["わ", "お金[かね]を{{分[わ]}}ける。"],
-  "里": ["さと", "{{里[さと]}}山[やま]を歩[ある]く。"],
-  "畑": ["はたけ", "祖父[そふ]は{{畑[はたけ]}}で野菜[やさい]を育[そだ]てる。"],
-  "茨": ["いばら", "庭[にわ]の{{茨[いばら]}}に気[き]をつける。"],
-  "岡": ["おか", "{{岡[おか]}}の上[うえ]から町[まち]を見[み]る。"],
-  "埼": ["さき", "武蔵[むさし]{{埼[さき]}}から海[うみ]を見[み]る。"],
-  "栃": ["とち", "{{栃[とち]}}の木[き]の葉[は]を見[み]る。"],
-  "阪": ["さか", "大{{阪[さか]}}へ電車[でんしゃ]で行[い]く。"],
-  "阜": ["ふ", "岐[ぎ]{{阜[ふ]}}県[けん]を地図[ちず]で探[さが]す。"],
-  "孝": ["こう", "{{孝[こう]}}太[た]くんと遊[あそ]ぶ。"],
-  "兄": ["あに", "{{兄[あに]}}と公園[こうえん]で遊[あそ]ぶ。"],
-  "姉": ["あね", "{{姉[あね]}}と買[か]い物[もの]に行[い]く。"],
-  "決": ["き", "話[はな]し合[あ]って日[ひ]を{{決[き]}}める。"],
-  "岐": ["き", "分[ぶん]{{岐[き]}}点[てん]で道[みち]を選[えら]ぶ。"],
-  "臣": ["じん", "大{{臣[じん]}}の話[はなし]を聞[き]く。"],
-  "選": ["えら", "好[す]きな色[いろ]を{{選[えら]}}ぶ。"],
-  "達": ["だち", "友{{達[だち]}}と遊[あそ]ぶ。"],
-  "奈": ["な", "{{奈[な]}}良[ら]の大仏[だいぶつ]を見学[けんがく]する。"],
-  "河": ["かわ", "{{河[かわ]}}原[ら]で遊[あそ]ぶ。"],
-  "接": ["つ", "枝[えだ]を{{接[つ]}}ぐ。"],
-  "設": ["もう", "新[あたら]しい部屋[へや]を{{設[もう]}}ける。"],
-  "貴": ["とうと", "{{貴[とうと]}}い命[いのち]を大切[たいせつ]にする。"],
-  "己": ["おのれ", "{{己[おのれ]}}の力[ちから]を信[しん]じる。"],
+  "分": ["わ", "{{分[わ]}}ける"], "里": ["さと", "{{里[さと]}}山[やま]"], "畑": ["はたけ", "{{畑[はたけ]}}"],
+  "茨": ["いばら", "{{茨[いばら]}}"], "岡": ["おか", "{{岡[おか]}}"], "埼": ["さき", "武蔵[むさし]{{埼[さき]}}"],
+  "栃": ["とち", "{{栃[とち]}}の木[き]"], "阪": ["さか", "大{{阪[さか]}}"], "阜": ["ふ", "岐[ぎ]{{阜[ふ]}}"],
+  "孝": ["こう", "{{孝[こう]}}行[こう]"], "兄": ["あに", "{{兄[あに]}}"], "姉": ["あね", "{{姉[あね]}}"],
+  "決": ["き", "{{決[き]}}める"], "岐": ["き", "分[ぶん]{{岐[き]}}点[てん]"], "臣": ["じん", "大{{臣[じん]}}"],
+  "選": ["えら", "{{選[えら]}}ぶ"], "達": ["だち", "友{{達[だち]}}"], "奈": ["な", "{{奈[な]}}良[ら]"],
+  "河": ["かわ", "{{河[かわ]}}原[ら]"], "接": ["つ", "{{接[つ]}}ぐ"], "設": ["もう", "{{設[もう]}}ける"],
+  "貴": ["とうと", "{{貴[とうと]}}い"], "己": ["おのれ", "{{己[おのれ]}}"],
+  "媛": ["ひめ", "愛[え]{{媛[ひめ]}}"], "潟": ["がた", "新[にい]{{潟[がた]}}"], "熊": ["くま", "{{熊[くま]}}本[もと]"],
+  "佐": ["さ", "{{佐[さ]}}藤[とう]"], "崎": ["さき", "長[なが]{{崎[さき]}}"], "滋": ["し", "{{滋[し]}}賀[が]"],
+  "縄": ["なわ", "{{縄[なわ]}}とび"], "井": ["い", "{{井[い]}}戸[ど]"], "沖": ["おき", "{{沖[おき]}}縄[なわ]"], "梨": ["なし", "{{梨[なし]}}"],
+  "后": ["ごう", "皇[こう]{{后[ごう]}}"],
+};
+
+// Where a particularly familiar elementary-school word is better than the
+// shortest entry in the source vocabulary list, retain that classroom choice.
+const preferred = {
+  "一": ["ひと", "{{一[ひと]}}つ"], "右": ["みぎ", "{{右[みぎ]}}"], "気": ["き", "{{気[き]}}持[も]ち"],
+  "域": ["いき", "地[ち]{{域[いき]}}"], "書": ["か", "{{書[か]}}く"],
 };
 
 const toHiragana = (value) => value.replace(/[ァ-ヶ]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60));
@@ -78,20 +74,29 @@ function markWord(word, readings, target, targetReading) {
   return [...word].map((char, index) => {
     if (!isKanji(char)) return char;
     const reading = readings[index];
-    return char === target && reading === targetReading ? `{{${char}[${reading}]}}` : `${char}[${reading}]`;
+    if (char === target && reading === targetReading) return `{{${char}[${reading}]}}`;
+    return reading ? `${char}[${reading}]` : char;
   }).join("");
 }
 
 function selectExample(entry) {
   const kun = (entry.kun || []).map(normalize);
   const scored = (entry.examples || []).map((example, index) => {
-    const readings = alignWord(example.word, example.reading);
-    if (!readings) return null;
+    let readings = alignWord(example.word, example.reading);
     const position = [...example.word].indexOf(entry.kanji);
     if (position < 0) return null;
+    if (!readings && position === 0) {
+      const matching = (candidates.get(entry.kanji) || []).find((value) => normalize(example.reading).startsWith(value));
+      if (matching) readings = [matching];
+    }
+    if (!readings) return null;
     const reading = readings[position];
     if (!reading) return null;
-    return { example, readings, reading, score: (kun.some((value) => value.startsWith(reading)) ? 100 : 0) + (example.sentence?.includes(example.word) ? 10 : 0) - index };
+    const wordLength = [...example.word].length;
+    const kanjiCount = [...example.word].filter(isKanji).length;
+    // A short, familiar word makes a better elementary-school prompt than a
+    // full sentence. Prefer a kunyomi when available, then the shortest word.
+    return { example, readings, reading, score: (kun.some((value) => value.startsWith(reading)) ? 1000 : 0) - (wordLength * 20) - (kanjiCount * 4) - index };
   }).filter(Boolean).sort((a, b) => b.score - a.score);
   return scored[0] || null;
 }
@@ -102,15 +107,12 @@ for (const [grade, chars] of Object.entries(gradeKanji)) {
   for (const kanji of chars) {
     const entry = entries.get(kanji);
     const chosen = entry && selectExample(entry);
-    if (chosen) {
+    if (preferred[kanji]) {
+      const [yomi, sentence] = preferred[kanji];
+      rows.push({ id: id++, grade: Number(grade), kanji, yomi, sentence });
+    } else if (chosen) {
       const marked = markWord(chosen.example.word, chosen.readings, kanji, chosen.reading);
-      // Some source entries provide a vocabulary example but not a full
-      // sentence (or use a numeral variant in the sentence). Keep the
-      // reading exact and use a classroom-natural fallback in that case.
-      const sentence = chosen.example.sentence?.includes(chosen.example.word)
-        ? chosen.example.sentence.replace(chosen.example.word, marked)
-        : `「${marked}」という言葉[ことば]を覚[おぼ]える。`;
-      rows.push({ id: id++, grade: Number(grade), kanji, yomi: chosen.reading, sentence });
+      rows.push({ id: id++, grade: Number(grade), kanji, yomi: chosen.reading, sentence: marked });
     } else if (fallbacks[kanji]) {
       const [yomi, sentence] = fallbacks[kanji];
       rows.push({ id: id++, grade: Number(grade), kanji, yomi, sentence });
