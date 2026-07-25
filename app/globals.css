@@ -100,8 +100,8 @@ input:focus,select:focus { border-color:var(--green); box-shadow:0 0 0 3px #2864
 .student-fields .name-field { width:180px; }
 .student-fields b { position:absolute; top:-17px; left:4px; font-size:9px; font-weight:500; }
 .paper-rule { height:3px; border-top:1px solid #222; border-bottom:1px solid #222; }
-.questions { height:505px; padding:24px 4px 12px; display:flex; flex-direction:row-reverse; justify-content:space-evenly; gap:11px; overflow:hidden; }
-.question-column { min-width:49px; height:100%; display:grid; grid-template-rows:25px 1fr 17px; justify-items:center; border-left:1px solid #d7d8d2; }
+.questions { height:505px; padding:24px 4px 12px; display:grid; grid-template-columns:repeat(17,minmax(0,1fr)); grid-auto-rows:minmax(0,1fr); grid-auto-flow:row; direction:rtl; gap:8px 5px; overflow:hidden; }
+.question-column { min-width:0; min-height:0; height:100%; display:grid; grid-template-rows:25px 1fr 17px; justify-items:center; border-left:1px solid #d7d8d2; }
 .question-column:first-child { border-left:0; }
 .question-no { width:22px; height:22px; display:grid; place-items:center; border:1px solid #555; border-radius:50%; font:11px Arial,sans-serif; }
 .question-column p { writing-mode:vertical-rl; margin:8px 0 0; font-family:"Yu Mincho",serif; font-size:21px; line-height:1.55; letter-spacing:.06em; overflow:hidden; }
@@ -111,17 +111,17 @@ input:focus,select:focus { border-color:var(--green); box-shadow:0 0 0 3px #2864
 .write-target rt { color:#4e5c55; font-family:"Yu Gothic",sans-serif; font-size:.42em; font-weight:700; }
 .reading-target { text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; font-weight:700; }
 .reading-target rt { text-decoration:none; }
-.reading-answer-box { display:inline-grid; width:2.2em; height:1.45em; place-items:center; border:1.5px solid #333; color:var(--red); font-family:"Yu Gothic",sans-serif; font-size:1.8em; font-weight:700; text-decoration:none; }
+.reading-answer-box { display:inline-grid; width:3.2em; height:1.45em; place-items:center; border:1.5px solid #333; color:var(--red); font-family:"Yu Gothic",sans-serif; font-size:1.8em; font-weight:700; text-decoration:none; }
 .answer-ribbon { position:absolute; left:0; top:0; padding:5px 13px; color:#fff; background:var(--red); font-size:10px; letter-spacing:.12em; }
 .paper-footer { height:27px; border-top:1px solid #d7d9d4; display:flex; align-items:end; justify-content:space-between; color:#919691; font-size:9px; letter-spacing:.15em; }
-.compact .questions { gap:5px; padding-left:0; padding-right:0; }
+.compact .questions { gap:6px 4px; padding-left:0; padding-right:0; }
 .compact .question-column { min-width:40px; }
 .compact .question-column p { font-size:18px; line-height:1.4; }
-.dense .questions { gap:2px; }
+.dense .questions { gap:5px 3px; }
 .dense .question-column { min-width:34px; }
 .dense .question-column p { font-size:15px; line-height:1.28; letter-spacing:0; }
 .dense .question-no { width:18px; height:18px; font-size:9px; }
-.ultra-dense .questions { gap:1px; padding-left:0; padding-right:0; }
+.ultra-dense .questions { gap:4px 2px; padding-left:0; padding-right:0; }
 .ultra-dense .question-column { min-width:28px; }
 .ultra-dense .question-column p { font-size:13px; line-height:1.15; letter-spacing:0; }
 .ultra-dense .question-no { width:16px; height:16px; font-size:8px; }
