@@ -432,7 +432,17 @@
       const hasLegacySentences = rows.some((row) => /[。！？]/.test(String(row.sentence || "")) || String(row.sentence || "").includes("という言葉"));
       if (hasLegacySentences) {
         await writeSampleTabs(state.sheetId);
-        return syncFromSheet({ silent });
+        // Do not immediately read the sheet again: Google Sheets can return
+        // the previous values briefly while the batch update propagates. Use
+        // the bundled vocabulary as the authoritative result of this one-time
+        // migration, then persist it locally. A later 30-second sync will
+        // resume normal reads and will preserve any user edits.
+        state.data = SAMPLE_DATA.map((row) => ({ ...row }));
+        state.sampleDataVersion = SAMPLE_DATA_VERSION;
+        state.lastLoaded = `${nowLabel()}（単語・熟語データへ移行）`;
+        saveState();
+        renderApp(silent ? undefined : { type: "success", text: `${SAMPLE_DATA.length}件を単語・熟語データへ更新しました` });
+        return;
       }
       const checked = validateRows(rows);
       if (!checked.valid.length) throw new Error(checked.errors[0] || "有効な例文がありません");
@@ -471,7 +481,9 @@
 
   async function init() {
     try {
-      const response = await fetch("/kanji-sample-data.json", { cache: "force-cache" });
+      // Version the URL so browsers cannot reuse the pre-vocabulary JSON from
+      // an earlier deployment.
+      const response = await fetch(`/kanji-sample-data.json?v=${SAMPLE_DATA_VERSION}`, { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       SAMPLE_DATA = await response.json();
     } catch (error) {
