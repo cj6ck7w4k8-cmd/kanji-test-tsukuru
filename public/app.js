@@ -37,6 +37,7 @@
   let syncTimer = null;
   let panelScroll = 0;
   let orderScroll = 0;
+  let pickerScrolls = [];
 
   function visitorId() {
     let id = localStorage.getItem(VISITOR_KEY);
@@ -114,8 +115,8 @@
     return parseSentence(row.sentence).map((token) => {
       if (token.type === "text") return esc(token.text);
       if (token.type === "ruby") return esc(canShow(token.text) ? token.text : token.reading);
-      if (qMode === "write") return `<span class="answer-box${answer ? " is-answer" : ""}">${answer ? esc(row.kanji) : ""}</span>`;
-      return `<ruby class="reading-target"><span>${esc(row.kanji)}</span>${answer ? `<rt>${esc(row.yomi)}</rt>` : ""}</ruby>`;
+      if (qMode === "write") return `<ruby class="write-target"><span class="answer-box${answer ? " is-answer" : ""}">${answer ? esc(row.kanji) : ""}</span><rt>${esc(row.yomi)}</rt></ruby>`;
+      return `<ruby class="reading-target"><span>${esc(row.kanji)}</span><rt><span class="reading-answer-box">${answer ? esc(row.yomi) : ""}</span></rt></ruby>`;
     }).join("");
   }
 
@@ -123,6 +124,7 @@
     const root = document.getElementById("kanji-app");
     panelScroll = document.querySelector(".control-panel")?.scrollTop ?? panelScroll;
     orderScroll = document.querySelector(".order-list")?.scrollTop ?? orderScroll;
+    pickerScrolls = [...document.querySelectorAll(".kanji-grid")].map((el) => el.scrollTop);
     const groups = uniqueKanjis();
     const items = selectedItems();
     const gradeOptions = [...Array(6)].map((_, i) => `<option value="${i + 1}" ${Number(state.quizGrade) === i + 1 ? "selected" : ""}>${i + 1}年生</option>`).join("");
@@ -144,7 +146,7 @@
         <span class="move-buttons"><button data-move="up" data-index="${index}" aria-label="上へ">↑</button><button data-move="down" data-index="${index}" aria-label="下へ">↓</button></span>
       </li>`;
     }).join("");
-    const density = items.length > 15 ? "dense" : items.length > 10 ? "compact" : "standard";
+    const density = items.length > 24 ? "ultra-dense" : items.length > 15 ? "dense" : items.length > 10 ? "compact" : "standard";
     const sheetConnected = Boolean(state.sheetId);
 
     root.innerHTML = `<div class="app-shell">
@@ -194,6 +196,7 @@
     requestAnimationFrame(() => {
       const panel = document.querySelector(".control-panel"); if (panel) panel.scrollTop = panelScroll;
       const list = document.querySelector(".order-list"); if (list) list.scrollTop = orderScroll;
+      document.querySelectorAll(".kanji-grid").forEach((el, index) => { el.scrollTop = pickerScrolls[index] || 0; });
     });
     saveState();
   }
