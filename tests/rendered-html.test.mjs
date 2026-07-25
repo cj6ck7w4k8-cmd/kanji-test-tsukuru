@@ -47,17 +47,22 @@ test("主要な要件をクライアント実装と印刷CSSに含む", async ()
   assert.match(css, /@page \{ size:A4 landscape/);
 });
 
-test("現行の学年別漢字1026字と読みデータを内蔵する", async () => {
-  const [script, readingsText] = await Promise.all([
+test("現行の学年別漢字1026字と訓読み優先の例文データを内蔵する", async () => {
+  const [script, sampleText] = await Promise.all([
     readFile(new URL("public/app.js", root), "utf8"),
-    readFile(new URL("public/kanji-readings.json", root), "utf8"),
+    readFile(new URL("public/kanji-sample-data.json", root), "utf8"),
   ]);
   const gradeMatches = [...script.matchAll(/^\s+([1-6]): "([^"]+)",$/gm)];
   assert.deepEqual(gradeMatches.map((match) => [...match[2]].length), [80, 160, 200, 202, 193, 191]);
   const all = gradeMatches.flatMap((match) => [...match[2]]);
   assert.equal(all.length, 1026);
   assert.equal(new Set(all).size, 1026);
-  const readings = JSON.parse(readingsText);
-  assert.equal(Object.keys(readings).length, 1026);
-  assert.ok(all.every((kanji) => /^[ぁ-ゖー]+$/.test(readings[kanji])));
+  const samples = JSON.parse(sampleText);
+  assert.equal(samples.length, 1026);
+  assert.equal(new Set(samples.map((sample) => `${sample.grade}:${sample.id}`)).size, 1026);
+  assert.ok(all.every((kanji) => samples.some((sample) => sample.kanji === kanji)));
+  assert.ok(samples.every((sample) => /^[ぁ-ゖー]+$/.test(sample.yomi) && sample.sentence.includes(`{{${sample.kanji}[${sample.yomi}]}}`)));
+  assert.match(script, /書き問題用/);
+  assert.match(script, /読み問題用/);
+  assert.match(script, /values:batchGet/);
 });

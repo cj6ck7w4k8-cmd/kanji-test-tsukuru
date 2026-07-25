@@ -19,20 +19,12 @@
   const gradeOf = new Map();
   Object.entries(GRADE_KANJI).forEach(([g, chars]) => [...chars].forEach((c) => gradeOf.set(c, Number(g))));
 
-  let SAMPLE_DATA = [
-    { id: 1, grade: 3, kanji: "港", yomi: "みなと", sentence: "大[おお]きな船[ふね]が{{港[みなと]}}にとまる。" },
-    { id: 2, grade: 3, kanji: "港", yomi: "こう", sentence: "朝[あさ]、{{港[こう]}}内[ない]を歩[ある]く。" },
-    { id: 3, grade: 3, kanji: "橋", yomi: "はし", sentence: "川[かわ]にかかる{{橋[はし]}}をわたる。" },
-    { id: 4, grade: 3, kanji: "緑", yomi: "みどり", sentence: "山[やま]の{{緑[みどり]}}が美[うつく]しい。" },
-    { id: 5, grade: 3, kanji: "温", yomi: "あたた", sentence: "{{温[あたた]}}かいお茶[ちゃ]を飲[の]む。" },
-    { id: 6, grade: 3, kanji: "泳", yomi: "およ", sentence: "海[うみ]で元気[げんき]に{{泳[およ]}}ぐ。" },
-    { id: 7, grade: 3, kanji: "農", yomi: "のう", sentence: "{{農[のう]}}家[か]が米[こめ]を育[そだ]てる。" },
-    { id: 8, grade: 3, kanji: "習", yomi: "なら", sentence: "新[あたら]しい歌[うた]を{{習[なら]}}う。" },
-    { id: 9, grade: 3, kanji: "旅", yomi: "たび", sentence: "家族[かぞく]で{{旅[たび]}}に出[で]る。" },
-    { id: 10, grade: 3, kanji: "深", yomi: "ふか", sentence: "森[もり]の{{深[ふか]}}い所[ところ]へ行[い]く。" },
-    { id: 11, grade: 3, kanji: "薬", yomi: "くすり", sentence: "食後[しょくご]に{{薬[くすり]}}を飲[の]む。" },
-    { id: 12, grade: 3, kanji: "球", yomi: "きゅう", sentence: "地[ち]{{球[きゅう]}}の形[かたち]を調[しら]べる。" },
-  ];
+  let SAMPLE_DATA = [];
+  const QUESTION_TYPES = ["write", "read"];
+  const questionTypeLabel = { write: "書き問題用", read: "読み問題用" };
+  const fullWidth = (number) => String(number).replace(/\d/g, (digit) => "０１２３４５６７８９"[Number(digit)]);
+  const sheetNameFor = (grade, type) => `${fullWidth(grade)}年${questionTypeLabel[type]}`;
+  const sheetSpecs = () => [...Array(6)].flatMap((_, index) => QUESTION_TYPES.map((type) => ({ grade: index + 1, type, title: sheetNameFor(index + 1, type) })));
 
   let defaults;
   let state;
@@ -75,18 +67,18 @@
   function esc(value) {
     return String(value).replace(/[&<>'"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[c]));
   }
-  function uniqueKanjis() {
+  function uniqueKanjis(type = "both") {
     const map = new Map();
-    state.data.filter((r) => r.grade === Number(state.quizGrade)).forEach((r) => {
+    state.data.filter((r) => r.grade === Number(state.quizGrade) && (type === "both" || r.questionType === "both" || r.questionType === type)).forEach((r) => {
       if (!map.has(r.kanji)) map.set(r.kanji, []);
       map.get(r.kanji).push(r);
     });
     return map;
   }
   function selectedItems() {
-    const groups = uniqueKanjis();
     return state.order.map((key) => {
       const [type, kanji] = key.split(":");
+      const groups = uniqueKanjis(type);
       const rows = groups.get(kanji) || [];
       const chosenId = String(state.choices[key] || "");
       const row = rows.find((r) => String(r.id) === chosenId) || rows[0];
@@ -130,7 +122,7 @@
     const gradeOptions = [...Array(6)].map((_, i) => `<option value="${i + 1}" ${Number(state.quizGrade) === i + 1 ? "selected" : ""}>${i + 1}年生</option>`).join("");
     const displayOptions = [`<option value="0" ${Number(state.displayGrade) === 0 ? "selected" : ""}>すべてひらがな</option>`]
       .concat([...Array(6)].map((_, i) => `<option value="${i + 1}" ${Number(state.displayGrade) === i + 1 ? "selected" : ""}>${i + 1}年生まで</option>`)).join("");
-    const gridFor = (type) => [...groups.entries()].map(([kanji, entries]) => {
+    const gridFor = (type) => [...uniqueKanjis(type).entries()].map(([kanji, entries]) => {
       const checked = state.order.includes(`${type}:${kanji}`);
       return `<label class="kanji-choice ${checked ? "checked" : ""}">
         <input type="checkbox" data-kanji="${esc(kanji)}" data-question-type="${type}" ${checked ? "checked" : ""}>
@@ -139,7 +131,7 @@
     }).join("") || `<div class="empty-small">この学年のデータはありません</div>`;
     const orderItems = items.map((item, index) => {
       const { row, type, key } = item;
-      const variants = groups.get(row.kanji) || [];
+      const variants = uniqueKanjis(type).get(row.kanji) || [];
       return `<li class="order-item" draggable="true" data-order-key="${esc(key)}">
         <span class="drag" aria-hidden="true">⠿</span><b>${index + 1}</b><span class="type-chip ${type}">${type === "write" ? "書" : "読"}</span><span class="order-kanji">${esc(row.kanji)}</span>
         ${variants.length > 1 ? `<select class="sentence-select" data-choice="${esc(key)}" aria-label="${esc(row.kanji)}の例文">${variants.map((v) => `<option value="${esc(v.id)}" ${String(v.id) === String(row.id) ? "selected" : ""}>${esc(stripNotation(v.sentence)).slice(0, 18)}</option>`).join("")}</select>` : `<span class="sentence-snippet">${esc(stripNotation(row.sentence))}</span>`}
@@ -284,10 +276,10 @@
   function validateRows(rows) {
     const valid = [], errors = [], ids = new Set();
     rows.forEach((raw, i) => {
-      const r = { id: raw.id, grade: Number(raw.grade), kanji: String(raw.kanji || "").trim(), yomi: String(raw.yomi || "").trim(), sentence: String(raw.sentence || "").trim() };
+      const r = { id: raw.id, grade: Number(raw.grade), kanji: String(raw.kanji || "").trim(), yomi: String(raw.yomi || "").trim(), sentence: String(raw.sentence || "").trim(), questionType: raw.questionType === "write" || raw.questionType === "read" ? raw.questionType : "both" };
       let reason = "";
       if (r.id === undefined || r.id === "" || !r.kanji || !r.yomi || !r.sentence) reason = "必須項目が不足";
-      else if (ids.has(String(r.id))) reason = "idが重複";
+      else if (ids.has(`${r.questionType}:${r.grade}:${r.id}`)) reason = "同じシート内でidが重複";
       else if (!Number.isInteger(r.grade) || r.grade < 1 || r.grade > 6) reason = "gradeは1〜6";
       else if ([...r.kanji].length !== 1 || !KANJI.test(r.kanji)) reason = "kanjiは漢字1文字";
       else if (!HIRAGANA.test(r.yomi)) reason = "yomiはひらがな";
@@ -296,21 +288,13 @@
         if (targets.length !== 1) reason = "対象マーカーは1つ必要";
         else if (targets[0][1] !== r.kanji || targets[0][2] !== r.yomi) reason = "対象マーカーとkanji・yomiが不一致";
       }
-      if (reason) errors.push(`${i + 2}行目: ${reason}`); else { ids.add(String(r.id)); valid.push(r); }
+      if (reason) errors.push(`${i + 2}行目: ${reason}`); else { ids.add(`${r.questionType}:${r.grade}:${r.id}`); valid.push(r); }
     });
     return { valid, errors };
   }
 
   function nowLabel() {
     return new Intl.DateTimeFormat("ja-JP", { dateStyle: "short", timeStyle: "short" }).format(new Date());
-  }
-
-  function buildSampleData(readings) {
-    let id = 1;
-    return Object.entries(GRADE_KANJI).flatMap(([grade, chars]) => [...chars].map((kanji) => {
-      const yomi = readings[kanji];
-      return { id: id++, grade: Number(grade), kanji, yomi, sentence: `「${yomi}」と読[よ]む{{${kanji}[${yomi}]}}を練習[れんしゅう]する。` };
-    }));
   }
 
   function waitForGoogleIdentity() {
@@ -369,29 +353,70 @@
   }
 
   async function createPersonalSheet() {
+    const specs = sheetSpecs();
     const created = await googleFetch("https://sheets.googleapis.com/v4/spreadsheets", {
       method: "POST",
       body: JSON.stringify({
         properties: { title: `漢字こつこつ 例文データ ${visitorId()}`, locale: "ja_JP" },
-        sheets: [{ properties: { title: "例文データ", gridProperties: { rowCount: 1100, columnCount: 5, frozenRowCount: 1 } } }],
+        sheets: specs.map(({ title, grade }) => ({ properties: { title, gridProperties: { rowCount: GRADE_KANJI[grade].length + 1, columnCount: 5, frozenRowCount: 1 } } })),
       }),
     });
-    const values = [["id", "grade", "kanji", "yomi", "sentence"], ...SAMPLE_DATA.map((row) => [row.id, row.grade, row.kanji, row.yomi, row.sentence])];
-    await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${created.spreadsheetId}/values/${encodeURIComponent("例文データ!A1:E1027")}?valueInputOption=RAW`, {
-      method: "PUT", body: JSON.stringify({ range: "例文データ!A1:E1027", majorDimension: "ROWS", values }),
-    });
+    await writeSampleTabs(created.spreadsheetId, specs);
     state.sheetId = created.spreadsheetId;
     state.sheetUrl = created.spreadsheetUrl || `https://docs.google.com/spreadsheets/d/${created.spreadsheetId}/edit`;
+    state.sheetSchemaVersion = 2;
     state.lastLoaded = `${nowLabel()}（Googleスプレッドシート作成）`;
+    saveState();
+  }
+
+  async function writeSampleTabs(spreadsheetId, specs = sheetSpecs()) {
+    const data = specs.map(({ title, grade, type }) => {
+      const rows = SAMPLE_DATA.filter((row) => row.grade === grade);
+      return {
+        range: `${title}!A1:E${rows.length + 1}`,
+        majorDimension: "ROWS",
+        values: [["id", "grade", "kanji", "yomi", "sentence"], ...rows.map((row) => [row.id, row.grade, row.kanji, row.yomi, row.sentence])],
+      };
+    });
+    await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values:batchUpdate`, {
+      method: "POST", body: JSON.stringify({ valueInputOption: "RAW", data }),
+    });
+  }
+
+  async function ensureSheetSchema() {
+    const metadata = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}?fields=sheets.properties`);
+    const existing = new Map((metadata.sheets || []).map((sheet) => [sheet.properties.title, sheet.properties]));
+    const specs = sheetSpecs();
+    const missing = specs.filter(({ title }) => !existing.has(title));
+    if (!missing.length) { state.sheetSchemaVersion = 2; return; }
+    await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}:batchUpdate`, {
+      method: "POST",
+      body: JSON.stringify({ requests: missing.map(({ title, grade }) => ({ addSheet: { properties: { title, gridProperties: { rowCount: GRADE_KANJI[grade].length + 1, columnCount: 5, frozenRowCount: 1 } } } })) }),
+    });
+    await writeSampleTabs(state.sheetId, missing);
+    const legacy = existing.get("例文データ");
+    if (legacy) {
+      await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}:batchUpdate`, {
+        method: "POST",
+        body: JSON.stringify({ requests: [{ updateSheetProperties: { properties: { sheetId: legacy.sheetId, title: "旧例文データ（バックアップ）", hidden: true }, fields: "title,hidden" } }] }),
+      });
+    }
+    state.sheetSchemaVersion = 2;
     saveState();
   }
 
   async function syncFromSheet({ silent = false } = {}) {
     if (!state.sheetId || !accessToken) return;
     try {
-      const result = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}/values/${encodeURIComponent("例文データ!A:E")}`);
-      const [headers = [], ...values] = result.values || [];
-      const rows = values.map((cells) => Object.fromEntries(headers.map((header, i) => [header, cells[i] ?? ""])));
+      await ensureSheetSchema();
+      const specs = sheetSpecs();
+      const params = new URLSearchParams();
+      specs.forEach(({ title }) => params.append("ranges", `${title}!A:E`));
+      const result = await googleFetch(`https://sheets.googleapis.com/v4/spreadsheets/${state.sheetId}/values:batchGet?${params}`);
+      const rows = (result.valueRanges || []).flatMap((range, index) => {
+        const [headers = [], ...values] = range.values || [];
+        return values.map((cells) => Object.fromEntries(headers.map((header, column) => [header, cells[column] ?? ""]))).map((row) => ({ ...row, questionType: specs[index].type }));
+      });
       const checked = validateRows(rows);
       if (!checked.valid.length) throw new Error(checked.errors[0] || "有効な例文がありません");
       state.data = checked.valid;
@@ -429,10 +454,9 @@
 
   async function init() {
     try {
-      const response = await fetch("/kanji-readings.json", { cache: "force-cache" });
+      const response = await fetch("/kanji-sample-data.json", { cache: "force-cache" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const readings = await response.json();
-      SAMPLE_DATA = buildSampleData(readings);
+      SAMPLE_DATA = await response.json();
     } catch (error) {
       console.error("1026字サンプルを読み込めませんでした", error);
     }
@@ -441,7 +465,7 @@
       url: "", displayGrade: 2, quizGrade: 1, title: "かん字 小テスト", activeTab: "question",
       data: SAMPLE_DATA, writeKanjis: gradeOne.slice(0, 5), readKanjis: gradeOne.slice(5, 10), choices: {},
       order: [...gradeOne.slice(0, 5).map((kanji) => `write:${kanji}`), ...gradeOne.slice(5, 10).map((kanji) => `read:${kanji}`)],
-      sheetId: "", sheetUrl: "", lastLoaded: `サンプルデータ（${SAMPLE_DATA.length}件）`,
+      sheetId: "", sheetUrl: "", sheetSchemaVersion: 2, lastLoaded: `サンプルデータ（${SAMPLE_DATA.length}件）`,
     };
     state = loadState();
     state.writeKanjis ||= [];
